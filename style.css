@@ -1,0 +1,640 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+  /* Palet Warna */
+  --primary-dark: #143628;
+  --primary-medium: #1b4a38;
+  --accent-gold: #eab308;
+  --accent-hover: #ca8a04;
+
+  --text-dark: #1f2937;
+  --text-white: #ffffff;
+
+  --bg-earth: #f4f1ea; /* Warna Cream Tanah */
+  --bg-light: #f9fafb; /* Warna Putih Tulang (untuk variasi) */
+
+  --header-height: 80px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text-dark);
+  background-color: var(--bg-earth);
+}
+
+/* Tipografi Judul */
+h1,
+h2,
+h3,
+h4,
+.logo,
+.stat-number {
+  font-family: "Playfair Display", serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+ul {
+  list-style: none;
+}
+
+/* Helper Classes */
+.text-gold {
+  color: var(--accent-gold);
+}
+.text-white {
+  color: var(--text-white);
+}
+.text-white-opacity {
+  color: rgba(255, 255, 255, 0.8);
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.tracking {
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* =========================================
+   2. HEADER & NAVBAR (UPDATED: HOVER KUNING)
+   ========================================= */
+header {
+  background-color: var(--primary-dark);
+  height: var(--header-height);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 5%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  z-index: 1002;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.logo span {
+  color: var(--accent-gold);
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Jarak antar tombol */
+  margin: 0;
+  padding: 0;
+}
+
+/* Style Link Menu Normal */
+nav ul li a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.95rem;
+
+  /* Membuat area link berbentuk kotak/pill */
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease; /* Transisi halus */
+}
+
+/* EFEK HOVER: BOX KUNING */
+nav ul li a:hover {
+  background-color: var(--accent-gold); /* Latar jadi Kuning */
+  color: var(--primary-dark); /* Teks jadi Hijau Gelap agar kontras */
+  transform: translateY(-2px); /* Sedikit naik ke atas */
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3); /* Sedikit bayangan kuning */
+  font-weight: 600;
+}
+
+/* Hapus tombol dukung khusus, karena semua menu sekarang punya efek tombol */
+.nav-btn-header {
+  display: none;
+}
+
+#menu-toggle,
+.hamburger {
+  display: none;
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+.hero {
+  background: linear-gradient(rgba(20, 54, 40, 0.6), rgba(20, 54, 40, 0.5)),
+    url("image/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+.hero-content {
+  max-width: 900px;
+  padding-top: 60px;
+}
+.hero h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin: 20px 0;
+}
+.hero h1 em {
+  color: var(--accent-gold);
+  font-style: italic;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  font-weight: 300;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  background: rgba(234, 179, 8, 0.2);
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  color: var(--accent-gold);
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.btn {
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+.btn-primary {
+  background: var(--accent-gold);
+  color: var(--primary-dark);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+.btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  backdrop-filter: blur(4px);
+}
+.btn-outline:hover {
+  background: white;
+  color: var(--primary-dark);
+}
+
+/* =========================================
+   4. SECTION: TENTANG
+   ========================================= */
+.about-section {
+  padding: 6rem 10%;
+  background-color: var(--bg-earth);
+}
+
+.section-header {
+  font-size: 3rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+}
+.section-title {
+  font-size: 3rem;
+  color: var(--primary-dark);
+  margin: 10px 0;
+}
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.info-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  transition: 0.3s;
+}
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-dark);
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+.info-card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
+.info-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =========================================
+   5. SECTION: KRISIS
+   ========================================= */
+.crisis-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("image/hutan.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 10% 10rem 10%;
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 10;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+.crisis-section .section-title {
+  color: #ffffff; /* <--- GANTI WARNA DI SINI (Putih) */
+  /* Atau gunakan var(--accent-gold) jika ingin warna Emas */
+
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Bayangan agar terbaca di background foto */
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 4rem;
+}
+.stat-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.stat-number {
+  display: block;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+}
+.stat-label {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================================
+   6. SECTION: AKSI
+   ========================================= */
+.action-section {
+  background-color: var(--bg-earth);
+  padding: 6rem 10%;
+}
+.split-layout {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+.action-image {
+  flex: 1;
+  position: relative;
+}
+.action-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+}
+.image-caption {
+  position: absolute;
+  bottom: 30px;
+  right: -20px;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.image-caption h3 {
+  color: var(--primary-dark);
+  margin: 0;
+  font-size: 1.5rem;
+}
+.image-caption p {
+  color: var(--accent-gold);
+  margin: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.action-content {
+  flex: 1;
+}
+.action-content h2 {
+  font-size: 3rem;
+  color: var(--primary-dark);
+  margin: 10px 0 20px 0;
+  line-height: 1.2;
+}
+.action-content .description {
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.action-grid-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.action-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  border: 1px solid #eee;
+  transition: 0.3s;
+}
+.action-box:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+.action-icon {
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  background: #f0fdf4;
+  padding: 10px;
+  border-radius: 8px;
+}
+.action-text h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+.action-text p {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* =========================================
+   7. SECTION: TIM KELOMPOK (HOVER CARD)
+   ========================================= */
+.team-section {
+  background-color: var(--bg-earth); /* UBAH DARI WHITE KE INI */
+  padding: 6rem 10%;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+/* Warna Subtitle khusus Tim */
+.team-section .section-subtitle {
+  color: var(--primary-dark);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 3rem;
+}
+.team-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 350px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.team-image {
+  width: 100%;
+  height: 100%;
+}
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.team-card:hover .team-image img {
+  transform: scale(1.1);
+}
+
+.team-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(20, 54, 40, 0.95),
+    rgba(20, 54, 40, 0.4)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 25px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-in-out;
+}
+.team-card:hover .team-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+.team-info h3 {
+  color: var(--accent-gold);
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  font-family: "Playfair Display", serif;
+}
+.team-role {
+  display: block;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.team-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* FOOTER */
+footer {
+  background: #0a1f16;
+  color: #888;
+  text-align: center;
+  padding: 3rem;
+}
+.logo-footer {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* =========================================
+   8. MEDIA QUERIES (MOBILE)
+   ========================================= */
+@media (max-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 968px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .split-layout {
+    flex-direction: column;
+  }
+  .image-caption {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1002;
+  }
+  .hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    transition: 0.3s;
+  }
+
+  nav {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--primary-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    z-index: 1001;
+  }
+  #menu-toggle:checked ~ nav {
+    top: 0;
+  }
+  #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -7px);
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  nav ul li a {
+    font-size: 1.5rem;
+    width: 100%;
+    display: block;
+  }
+  nav ul li a:hover {
+    background: transparent;
+    color: var(--accent-gold);
+    box-shadow: none;
+    transform: none;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .stat-number {
+    font-size: 3rem;
+  }
+  section {
+    padding: 4rem 5%;
+  }
+  .action-grid-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .team-card {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
